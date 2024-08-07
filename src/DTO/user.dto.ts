@@ -1,4 +1,3 @@
-import { Prop } from "@nestjs/mongoose";
 import { IsEmail, IsNotEmpty, MinLength, min } from "class-validator";
 
 export class userDto {

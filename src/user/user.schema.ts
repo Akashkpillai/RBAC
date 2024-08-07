@@ -11,10 +11,10 @@ export class User{
     @Prop({unique:[true,"Duplicate Email"]})
     email:string
 
-    @Prop()
+    @Prop({isRequired:true})
     password:string
 
-    @Prop()
+    @Prop({isRequired:true})
     role:string
 }
 
