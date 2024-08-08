@@ -22,11 +22,11 @@ export class AuthController {
         }
     }
     @Post('login')
-    async login(@Body() loginDto:loginDto):Promise<User>{
+    async login(@Body() loginDto:loginDto):Promise<{jwt:string}>{
         try {
             return await this.authService.login(loginDto) 
         } catch (error) {
-           return error.response
+            return error.response
         }
     }
 }
