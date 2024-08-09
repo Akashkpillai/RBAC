@@ -6,7 +6,8 @@ import { UserModule } from './user/user.module';
 import configFile from './config/config.file'
 
 @Module({
-  imports: [AuthModule,
+  imports: [
+  AuthModule,
   ConfigModule.forRoot({
     isGlobal:true,
     load:[configFile]

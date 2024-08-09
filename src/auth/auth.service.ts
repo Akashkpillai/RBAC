@@ -41,4 +41,12 @@ export class AuthService {
                 }
             } 
     }
+    async profile(id){
+        let user = await this.userService.findUserById(id)
+        if(user){
+            return user
+        }else{
+            throw new NotFoundException("No user found")
+        }
+    }
 }

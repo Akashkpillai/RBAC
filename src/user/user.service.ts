@@ -18,4 +18,10 @@ export class UserService {
         const user = await this.userModule.findOne({email})
         return user
     }
+
+    async findUserById(id):Promise<Partial<User>>{
+        let user = await this.userModule.findById(id)
+        let {password,...result} = user.toObject()
+        return result
+    }
 }

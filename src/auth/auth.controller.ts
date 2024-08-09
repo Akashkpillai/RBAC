@@ -1,9 +1,10 @@
-import { Body, ConflictException, Controller, InternalServerErrorException, Post } from '@nestjs/common';
+import { Body, ConflictException, Controller, Get, InternalServerErrorException, Post, Req, UseGuards } from '@nestjs/common';
 import { userDto } from '../DTO/user.dto';
 import { AuthService } from './auth.service';
 import { User } from 'src/user/user.schema';
 import { loginDto } from 'src/DTO/login.dto';
 import { promises } from 'dns';
+import { JwtGuardsGuard } from './guards/jwt-guards/jwt-guards.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -28,5 +29,11 @@ export class AuthController {
         } catch (error) {
             return error.response
         }
+    }
+
+    @UseGuards(JwtGuardsGuard)
+    @Get('profile')
+    async profile(@Req() req){
+        return await this.authService.profile(req.user._id)
     }
 }
