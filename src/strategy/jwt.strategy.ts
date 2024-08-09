@@ -13,6 +13,6 @@ export class JwtStrategy extends PassportStrategy(Strategy){
     }
 
     async validate(payLoad:jwtInterface){
-        return {_id   : payLoad._id }
+        return payLoad
     }
 }

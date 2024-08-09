@@ -32,7 +32,7 @@ export class AuthService {
                 if(password){
                     const isValid = await bcrypt.compare(password,user.password)
                     if(isValid){
-                        let payLoad = {_id:user._id}
+                        let payLoad = {_id:user._id,role:user.role}
                         let jwt = await this.jwtService.signAsync(payLoad)
                         return { jwt }
                     }else{
